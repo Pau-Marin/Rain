@@ -18,7 +18,7 @@ public class Game extends Canvas implements Runnable {
 	public static int HEIGHT = WIDTH / 16 * 9;
 	public static int SCALE = 3;
 
-	public static String VERSION = "b0.1";
+	public static String VERSION = "version a0.1";
 	public static String TITLE = "Rain | " + VERSION;
 
 	private Thread thread;
@@ -57,17 +57,29 @@ public class Game extends Canvas implements Runnable {
 
 	public void run() {
 		long lastTime = System.nanoTime();
+		long timer = System.currentTimeMillis();
 		final double ns = 1000000000.0 / 60.0;
 		double delta = 0;
+		int frames = 0;
+		int updates = 0;
 		while (running) {
 			long now = System.nanoTime();
 			delta += (now - lastTime) / ns;
 			lastTime = now;
 			while (delta >= 1) {
 				update();
+				updates++;
 				delta--;
 			}
 			render();
+			frames++;
+
+			if (System.currentTimeMillis() - timer > 1000) {
+				timer += 1000;
+				frame.setTitle(TITLE + " | FPS: " + frames + ", UPS: " + updates);
+				frames = 0;
+				updates = 0;
+			}
 		}
 		stop();
 	}
