@@ -14,9 +14,9 @@ import com.paumarin.rain.graphics.Screen;
 public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
 
-	public static int WIDTH = 300;
-	public static int HEIGHT = WIDTH / 16 * 9;
-	public static int SCALE = 3;
+	public static final int WIDTH = 300;
+	public static final int HEIGHT = WIDTH / 16 * 9;
+	public static final int SCALE = 3;
 
 	public static String VERSION = "version a0.1";
 	public static String TITLE = "Rain | " + VERSION;
@@ -104,7 +104,7 @@ public class Game extends Canvas implements Runnable {
 
 		Graphics g = bs.getDrawGraphics();
 		g.fillRect(0, 0, getWidth(), getHeight());
-		g.drawImage(image, 0, 0, getWidth(), getWidth(), null);
+		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 		g.dispose();
 		bs.show();
 	}
