@@ -10,6 +10,7 @@ import java.awt.image.DataBufferInt;
 import javax.swing.JFrame;
 
 import com.paumarin.rain.graphics.Screen;
+import com.paumarin.rain.input.Keyboard;
 
 public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
@@ -30,6 +31,7 @@ public class Game extends Canvas implements Runnable {
 	private boolean running = false;
 
 	private Screen screen;
+	private Keyboard key;
 
 	public Game() {
 		Dimension size = new Dimension(WIDTH * SCALE, HEIGHT * SCALE);
@@ -37,6 +39,9 @@ public class Game extends Canvas implements Runnable {
 
 		screen = new Screen(WIDTH, HEIGHT);
 		frame = new JFrame();
+
+		key = new Keyboard();
+		addKeyListener(key);
 	}
 
 	public synchronized void start() {
@@ -85,7 +90,7 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	public void update() {
-
+		key.update();
 	}
 
 	public void render() {
