@@ -11,7 +11,7 @@ public class Sprite {
 	private SpriteSheet sheet;
 
 	public static Sprite grass = new Sprite(16, 0, 0, SpriteSheet.tiles);
-	public static Sprite voisSprite = new Sprite(16, 0xff00ff);
+	public static Sprite voisSprite = new Sprite(16, 0x1b87e0);
 
 	public Sprite(int size, int x, int y, SpriteSheet sheet) {
 		SIZE = size;

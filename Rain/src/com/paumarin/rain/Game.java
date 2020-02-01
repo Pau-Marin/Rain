@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 
 import com.paumarin.rain.graphics.Screen;
 import com.paumarin.rain.input.Keyboard;
+import com.paumarin.rain.level.Level;
 
 public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
@@ -32,6 +33,7 @@ public class Game extends Canvas implements Runnable {
 
 	private Screen screen;
 	private Keyboard key;
+	private Level level;
 
 	public Game() {
 		Dimension size = new Dimension(WIDTH * SCALE, HEIGHT * SCALE);
@@ -39,8 +41,9 @@ public class Game extends Canvas implements Runnable {
 
 		screen = new Screen(WIDTH, HEIGHT);
 		frame = new JFrame();
-
 		key = new Keyboard();
+		level = new Level(64, 64);
+
 		addKeyListener(key);
 	}
 
@@ -108,7 +111,7 @@ public class Game extends Canvas implements Runnable {
 		}
 
 		screen.clear();
-		screen.render(x, y);
+		level.render(x, y, screen);
 
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
