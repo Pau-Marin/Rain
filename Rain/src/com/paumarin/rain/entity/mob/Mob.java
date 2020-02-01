@@ -20,4 +20,7 @@ public abstract class Mob extends Entity {
 		return false;
 	}
 
+	public void render() {
+	}
+
 }
