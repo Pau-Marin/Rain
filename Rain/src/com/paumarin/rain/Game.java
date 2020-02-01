@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import com.paumarin.rain.graphics.Screen;
 import com.paumarin.rain.input.Keyboard;
 import com.paumarin.rain.level.Level;
+import com.paumarin.rain.level.RandomLevel;
 
 public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
@@ -42,7 +43,7 @@ public class Game extends Canvas implements Runnable {
 		screen = new Screen(WIDTH, HEIGHT);
 		frame = new JFrame();
 		key = new Keyboard();
-		level = new Level(64, 64);
+		level = new RandomLevel(64, 64);
 
 		addKeyListener(key);
 	}
