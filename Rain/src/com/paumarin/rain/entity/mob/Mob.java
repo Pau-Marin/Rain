@@ -18,7 +18,7 @@ public abstract class Mob extends Entity {
 
 		if (!collision()) {
 			x += xa;
-			y *= ya;
+			y += ya;
 		}
 	}
 
