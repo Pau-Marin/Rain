@@ -9,6 +9,7 @@ import java.awt.image.DataBufferInt;
 
 import javax.swing.JFrame;
 
+import com.paumarin.rain.entity.mob.Player;
 import com.paumarin.rain.graphics.Screen;
 import com.paumarin.rain.input.Keyboard;
 import com.paumarin.rain.level.Level;
@@ -35,6 +36,7 @@ public class Game extends Canvas implements Runnable {
 	private Screen screen;
 	private Keyboard key;
 	private Level level;
+	private Player player;
 
 	public Game() {
 		Dimension size = new Dimension(WIDTH * SCALE, HEIGHT * SCALE);
@@ -44,6 +46,7 @@ public class Game extends Canvas implements Runnable {
 		frame = new JFrame();
 		key = new Keyboard();
 		level = new RandomLevel(64, 64);
+		player = new Player(key);
 
 		addKeyListener(key);
 	}
@@ -94,14 +97,9 @@ public class Game extends Canvas implements Runnable {
 		stop();
 	}
 
-	int x = 0, y = 0;
-
 	public void update() {
 		key.update();
-		if (key.up) y--;
-		if (key.down) y++;
-		if (key.left) x--;
-		if (key.right) x++;
+		player.update();
 	}
 
 	public void render() {
@@ -112,7 +110,7 @@ public class Game extends Canvas implements Runnable {
 		}
 
 		screen.clear();
-		level.render(x, y, screen);
+		level.render(player.x, player.y, screen);
 
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
