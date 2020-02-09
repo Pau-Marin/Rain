@@ -13,7 +13,6 @@ import com.paumarin.rain.entity.mob.Player;
 import com.paumarin.rain.graphics.Screen;
 import com.paumarin.rain.input.Keyboard;
 import com.paumarin.rain.level.Level;
-import com.paumarin.rain.level.SpawnLevel;
 
 public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
@@ -45,7 +44,7 @@ public class Game extends Canvas implements Runnable {
 		screen = new Screen(WIDTH, HEIGHT);
 		frame = new JFrame();
 		key = new Keyboard();
-		level = new SpawnLevel("/levels/spawn.png");
+		level = Level.spawn;
 		player = new Player(8 * 16, 5 * 16, key);
 
 		addKeyListener(key);
