@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import com.paumarin.rain.entity.mob.Player;
 import com.paumarin.rain.graphics.Screen;
 import com.paumarin.rain.input.Keyboard;
+import com.paumarin.rain.input.Mouse;
 import com.paumarin.rain.level.Level;
 import com.paumarin.rain.level.TileCoordinate;
 
@@ -51,6 +52,9 @@ public class Game extends Canvas implements Runnable {
 		player.init(level);
 
 		addKeyListener(key);
+		Mouse mouse = new Mouse();
+		addMouseListener(mouse);
+		addMouseMotionListener(mouse);
 	}
 
 	public synchronized void start() {
