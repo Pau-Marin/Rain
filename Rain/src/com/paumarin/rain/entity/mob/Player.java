@@ -1,6 +1,7 @@
 package com.paumarin.rain.entity.mob;
 
 import com.paumarin.rain.Game;
+import com.paumarin.rain.entity.projectile.Projectile;
 import com.paumarin.rain.graphics.Screen;
 import com.paumarin.rain.graphics.Sprite;
 import com.paumarin.rain.input.Keyboard;
@@ -41,7 +42,17 @@ public class Player extends Mob {
 			walking = false;
 		}
 
+		clear();
 		updateShooting();
+	}
+
+	private void clear() {
+		for (int i = 0; i < projectiles.size(); i++) {
+			Projectile p = projectiles.get(i);
+			if (p.isRemoved()) {
+				projectiles.remove(i);
+			}
+		}
 	}
 
 	private void updateShooting() {

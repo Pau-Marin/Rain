@@ -10,6 +10,8 @@ public abstract class Projectile extends Entity {
 	protected double angle;
 	protected double nx, ny;
 	protected double speed, rateOfFire, range, damage;
+	protected double x, y;
+	protected double distance;
 
 	protected Sprite sprite;
 
@@ -33,7 +35,6 @@ public abstract class Projectile extends Entity {
 	}
 
 	public void render(Screen screen) {
-		screen.renderProjectile(x, y, this);
 	}
 
 }
