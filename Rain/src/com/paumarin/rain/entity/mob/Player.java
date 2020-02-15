@@ -1,8 +1,10 @@
 package com.paumarin.rain.entity.mob;
 
+import com.paumarin.rain.Game;
 import com.paumarin.rain.graphics.Screen;
 import com.paumarin.rain.graphics.Sprite;
 import com.paumarin.rain.input.Keyboard;
+import com.paumarin.rain.input.Mouse;
 
 public class Player extends Mob {
 
@@ -37,6 +39,17 @@ public class Player extends Mob {
 			walking = true;
 		} else {
 			walking = false;
+		}
+
+		updateShooting();
+	}
+
+	private void updateShooting() {
+		if (Mouse.getButton() == 1) {
+			double dx = Mouse.getX() - Game.WIDTH / 2;
+			double dy = Mouse.getY() - Game.HEIGHT / 2;
+			double dir = Math.atan2(dy, dx);
+			shoot(x, y, dir);
 		}
 	}
 
