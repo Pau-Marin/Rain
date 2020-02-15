@@ -19,16 +19,16 @@ import com.paumarin.rain.level.TileCoordinate;
 public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
 
-	public static final int WIDTH = 300;
-	public static final int HEIGHT = WIDTH / 16 * 9;
-	public static final int SCALE = 3;
+	private static final int width = 300;
+	private static final int height = width / 16 * 9;
+	private static final int scale = 3;
 
 	public static String VERSION = "version a0.1";
 	public static String TITLE = "Rain | " + VERSION;
 
 	private Thread thread;
 	private JFrame frame;
-	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+	private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 
 	private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
 
@@ -40,10 +40,10 @@ public class Game extends Canvas implements Runnable {
 	private Player player;
 
 	public Game() {
-		Dimension size = new Dimension(WIDTH * SCALE, HEIGHT * SCALE);
+		Dimension size = new Dimension(width * scale, height * scale);
 		setPreferredSize(size);
 
-		screen = new Screen(WIDTH, HEIGHT);
+		screen = new Screen(width, height);
 		frame = new JFrame();
 		key = new Keyboard();
 		level = Level.spawn;
@@ -52,9 +52,18 @@ public class Game extends Canvas implements Runnable {
 		player.init(level);
 
 		addKeyListener(key);
+
 		Mouse mouse = new Mouse();
 		addMouseListener(mouse);
 		addMouseMotionListener(mouse);
+	}
+
+	public static int getWindowWidth() {
+		return width * scale;
+	}
+
+	public static int getWindowHeight() {
+		return width * scale;
 	}
 
 	public synchronized void start() {
