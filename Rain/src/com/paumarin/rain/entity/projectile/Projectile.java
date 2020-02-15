@@ -24,8 +24,16 @@ public abstract class Projectile extends Entity {
 	protected void move() {
 	}
 
+	public Sprite getSprite() {
+		return sprite;
+	}
+
+	public int getSpriteSize() {
+		return sprite.SIZE;
+	}
+
 	public void render(Screen screen) {
-		screen.renderTile(x, y, sprite);
+		screen.renderProjectile(x, y, this);
 	}
 
 }
