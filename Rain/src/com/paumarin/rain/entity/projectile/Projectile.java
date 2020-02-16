@@ -1,5 +1,7 @@
 package com.paumarin.rain.entity.projectile;
 
+import java.util.Random;
+
 import com.paumarin.rain.entity.Entity;
 import com.paumarin.rain.graphics.Screen;
 import com.paumarin.rain.graphics.Sprite;
@@ -14,6 +16,8 @@ public abstract class Projectile extends Entity {
 	protected double distance;
 
 	protected Sprite sprite;
+
+	protected final Random random = new Random();
 
 	public Projectile(int x, int y, double dir) {
 		xOrigin = x;

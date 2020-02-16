@@ -63,7 +63,7 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	public static int getWindowHeight() {
-		return WIDTH * SCALE;
+		return HEIGHT * SCALE;
 	}
 
 	public synchronized void start() {

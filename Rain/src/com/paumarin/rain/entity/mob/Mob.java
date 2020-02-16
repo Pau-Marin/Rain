@@ -1,8 +1,5 @@
 package com.paumarin.rain.entity.mob;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.paumarin.rain.entity.Entity;
 import com.paumarin.rain.entity.projectile.Projectile;
 import com.paumarin.rain.entity.projectile.WizardProjectile;
@@ -15,8 +12,6 @@ public abstract class Mob extends Entity {
 	protected int dir = 0;
 	protected boolean moving = false;
 	protected boolean walking = false;
-
-	protected List<Projectile> projectiles = new ArrayList<Projectile>();
 
 	public void move(int xa, int ya) {
 		if (xa != 0 && ya != 0) {
@@ -41,8 +36,7 @@ public abstract class Mob extends Entity {
 
 	protected void shoot(int x, int y, double dir) {
 		Projectile p = new WizardProjectile(x, y, dir);
-		projectiles.add(p);
-		level.add(p);
+		level.addProjectile(p);
 	}
 
 	private boolean collision(int xa, int ya) {
