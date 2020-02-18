@@ -1,5 +1,6 @@
 package com.paumarin.rain.entity.projectile;
 
+import com.paumarin.rain.entity.particle.Particle;
 import com.paumarin.rain.graphics.Screen;
 import com.paumarin.rain.graphics.Sprite;
 
@@ -18,7 +19,11 @@ public class WizardProjectile extends Projectile {
 	}
 
 	public void update() {
-		if (level.tileCollision(x, y, nx, ny, 7)) remove();
+		if (level.tileCollision(x, y, nx, ny, 7)) {
+			remove();
+			Particle p = new Particle((int) x, (int) y, 50, 500);
+			level.add(p);
+		}
 		move();
 	}
 

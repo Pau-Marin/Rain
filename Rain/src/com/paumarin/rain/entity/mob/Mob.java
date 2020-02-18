@@ -1,6 +1,7 @@
 package com.paumarin.rain.entity.mob;
 
 import com.paumarin.rain.entity.Entity;
+import com.paumarin.rain.entity.particle.Particle;
 import com.paumarin.rain.entity.projectile.Projectile;
 import com.paumarin.rain.entity.projectile.WizardProjectile;
 import com.paumarin.rain.graphics.Sprite;
