@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.paumarin.rain.entity.Entity;
+import com.paumarin.rain.entity.Spawner;
+import com.paumarin.rain.entity.particle.Particle;
 import com.paumarin.rain.entity.projectile.Projectile;
 import com.paumarin.rain.graphics.Screen;
 import com.paumarin.rain.level.tile.Tile;
@@ -17,6 +19,7 @@ public class Level {
 
 	private List<Entity> entities = new ArrayList<Entity>();
 	private List<Projectile> projectiles = new ArrayList<Projectile>();
+	private List<Particle> particles = new ArrayList<Particle>();
 
 	public static Level spawn = new SpawnLevel("/levels/spawn.png");
 
@@ -30,6 +33,8 @@ public class Level {
 	public Level(String path) {
 		loadLevel(path);
 		generateLevel();
+
+		add(new Spawner(16 * 16, 62 * 16, Spawner.Type.PARTICLE, 500,this));
 	}
 
 	protected void generateLevel() {
@@ -51,6 +56,10 @@ public class Level {
 
 		for (int i = 0; i < projectiles.size(); i++) {
 			projectiles.get(i).update();
+		}
+		
+		for (int i = 0; i < particles.size(); i++) {
+			particles.get(i).update();
 		}
 	}
 
@@ -92,15 +101,21 @@ public class Level {
 		for (int i = 0; i < projectiles.size(); i++) {
 			projectiles.get(i).render(screen);
 		}
+		
+		for (int i = 0; i < particles.size(); i++) {
+			particles.get(i).render(screen);
+		}
 	}
 
 	public void add(Entity e) {
-		entities.add(e);
-	}
-
-	public void addProjectile(Projectile p) {
-		p.init(this);
-		projectiles.add(p);
+		e.init(this);
+		if (e instanceof Particle) {
+			particles.add((Particle) e);
+		} else if (e instanceof Projectile) {
+			projectiles.add((Projectile) e);
+		} else {
+			entities.add(e);
+		}
 	}
 
 	// Grass = 0xFF00FF00

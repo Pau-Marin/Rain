@@ -1,15 +1,10 @@
 package com.paumarin.rain.entity.particle;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.paumarin.rain.entity.Entity;
 import com.paumarin.rain.graphics.Screen;
 import com.paumarin.rain.graphics.Sprite;
 
 public class Particle extends Entity {
-
-	private List<Particle> particles = new ArrayList<Particle>();
 
 	private Sprite sprite;
 
@@ -27,14 +22,6 @@ public class Particle extends Entity {
 
 		this.xa = random.nextGaussian();
 		this.ya = random.nextGaussian();
-	}
-
-	public Particle(int x, int y, int life, int amount) {
-		this(x, y, life);
-		for (int i = 0; i < amount - 1; i++) {
-			particles.add(new Particle(x, y, life));
-		}
-		particles.add(this);
 	}
 
 	public void update() {
