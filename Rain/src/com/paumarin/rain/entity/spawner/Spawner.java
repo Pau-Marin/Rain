@@ -1,5 +1,6 @@
-package com.paumarin.rain.entity;
+package com.paumarin.rain.entity.spawner;
 
+import com.paumarin.rain.entity.Entity;
 import com.paumarin.rain.entity.particle.Particle;
 import com.paumarin.rain.level.Level;
 
@@ -16,11 +17,6 @@ public class Spawner extends Entity {
 		this.x = x;
 		this.y = y;
 		this.type = type;
-		for (int i = 0; i < amount; i++) {
-			if (type == Type.PARTICLE) {
-				level.add(new Particle(x, y, 50));
-			}
-		}
 	}
 
 }
