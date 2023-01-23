@@ -14,7 +14,7 @@ public class SpriteSheet {
 	private Sprite[] sprites;
 
 	public static SpriteSheet tiles = new SpriteSheet("/textures/sheets/spritesheet.png", 256);
-	public static SpriteSheet spawn_level = new SpriteSheet("/textures/sheets/spawn_level.png", 48);
+	public static SpriteSheet spawn_level = new SpriteSheet("/textures/sheets/spawn_lvl.png", 48);
 	public static SpriteSheet projectile_wizard = new SpriteSheet("/textures/sheets/projectiles/wizard.png", 48);
 
 	public static SpriteSheet player = new SpriteSheet("/textures/sheets/player_sheet.png", 128, 96);
