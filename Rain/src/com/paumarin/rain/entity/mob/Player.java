@@ -3,8 +3,10 @@ package com.paumarin.rain.entity.mob;
 import com.paumarin.rain.Game;
 import com.paumarin.rain.entity.projectile.Projectile;
 import com.paumarin.rain.entity.projectile.WizardProjectile;
+import com.paumarin.rain.graphics.AnimatedSprite;
 import com.paumarin.rain.graphics.Screen;
 import com.paumarin.rain.graphics.Sprite;
+import com.paumarin.rain.graphics.SpriteSheet;
 import com.paumarin.rain.input.Keyboard;
 import com.paumarin.rain.input.Mouse;
 
@@ -12,6 +14,7 @@ public class Player extends Mob {
 
 	private Keyboard input;
 	private Sprite sprite;
+	private AnimatedSprite test = new AnimatedSprite(SpriteSheet.player_down, 32, 32, 3);
 
 	private int anim = 0;
 	private boolean walking = false;
@@ -32,6 +35,7 @@ public class Player extends Mob {
 	}
 
 	public void update() {
+		test.update();
 		if (fireRate > 0) fireRate--;
 		int xa = 0, ya = 0;
 		if (anim < 7500) anim++;
@@ -114,6 +118,7 @@ public class Player extends Mob {
 				}
 			}
 		}
+		sprite = test.getSprite();
 		screen.renderPlayer(x - 16, y - 16, sprite, flip);
 	}
 

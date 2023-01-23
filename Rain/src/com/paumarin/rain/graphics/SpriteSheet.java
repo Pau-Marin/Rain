@@ -11,6 +11,7 @@ public class SpriteSheet {
 	public final int SIZE;
 	public final int WIDTH, HEIGHT;
 	public int[] pixels;
+	private Sprite[] sprites;
 
 	public static SpriteSheet tiles = new SpriteSheet("/textures/sheets/spritesheet.png", 256);
 	public static SpriteSheet spawn_level = new SpriteSheet("/textures/sheets/spawn_level.png", 48);
@@ -25,8 +26,7 @@ public class SpriteSheet {
 		int w = width * spriteSize;
 		int h = height * spriteSize;
 
-		if (width == height) SIZE = width;
-		else SIZE = -1;
+		SIZE = width == height ? width : -1;
 
 		WIDTH = w;
 		HEIGHT = h;
@@ -39,6 +39,22 @@ public class SpriteSheet {
 				pixels[x0 + y0 * w] = sheet.pixels[xp + yp * sheet.WIDTH];
 			}
 		}
+
+		int frame = 0;
+		sprites = new Sprite[width * height];
+		for (int ya = 0; ya < height; ya++) {
+			for (int xa = 0; xa < width; xa++) {
+				int[] spritePixels = new int[spriteSize * spriteSize];
+				for (int y0 = 0; y0 < spriteSize; y0++) {
+					for (int x0 = 0; x0 < spriteSize; x0++) {
+						spritePixels[x0 + y0 * spriteSize] = pixels[(x0 + xa * spriteSize) + (y0 + ya * spriteSize) * WIDTH];
+					}
+				}
+				Sprite sprite = new Sprite(spritePixels, spriteSize, spriteSize);
+				sprites[frame++] = sprite;
+			}
+		}
+
 	}
 
 	public SpriteSheet(String path, int size) {
@@ -52,11 +68,15 @@ public class SpriteSheet {
 
 	public SpriteSheet(String path, int width, int height) {
 		this.path = path;
-		SIZE = -1;
+		SIZE = width == height ? width : -1;
 		WIDTH = width;
 		HEIGHT = height;
 		pixels = new int[WIDTH * HEIGHT];
 		load();
+	}
+
+	public Sprite[] getSprites() {
+		return sprites;
 	}
 
 	private void load() {
