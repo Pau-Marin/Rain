@@ -5,7 +5,7 @@ import java.util.Random;
 import com.paumarin.rain.graphics.Screen;
 import com.paumarin.rain.level.Level;
 
-public abstract class Entity {
+public class Entity {
 
 	public int x, y;
 

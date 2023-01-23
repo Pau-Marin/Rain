@@ -1,9 +1,9 @@
 package com.paumarin.rain.entity.mob;
 
 import com.paumarin.rain.entity.Entity;
-import com.paumarin.rain.entity.particle.Particle;
 import com.paumarin.rain.entity.projectile.Projectile;
 import com.paumarin.rain.entity.projectile.WizardProjectile;
+import com.paumarin.rain.graphics.Screen;
 import com.paumarin.rain.graphics.Sprite;
 
 public abstract class Mob extends Entity {
@@ -32,8 +32,9 @@ public abstract class Mob extends Entity {
 		}
 	}
 
-	public void update() {
-	}
+	public abstract void update();
+
+	public abstract void render(Screen screen);
 
 	protected void shoot(int x, int y, double dir) {
 		Projectile p = new WizardProjectile(x, y, dir);
@@ -50,9 +51,6 @@ public abstract class Mob extends Entity {
 		}
 
 		return solid;
-	}
-
-	public void render() {
 	}
 
 }
