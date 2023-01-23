@@ -46,8 +46,6 @@ public class Player extends Mob {
 
 		if (fireRate > 0) fireRate--;
 		int xa = 0, ya = 0;
-		if (anim < 7500) anim++;
-		else anim = 0;
 
 		if (input.up) {
 			ya--;

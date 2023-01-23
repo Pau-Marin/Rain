@@ -1,7 +1,6 @@
 package com.paumarin.rain.entity.spawner;
 
 import com.paumarin.rain.entity.Entity;
-import com.paumarin.rain.entity.particle.Particle;
 import com.paumarin.rain.level.Level;
 
 public class Spawner extends Entity {
