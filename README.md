@@ -5,4 +5,4 @@ That's my game following the serie from [TheCherno](https://github.com/TheCherno
 
 [Playlist](https://www.youtube.com/playlist?list=PLlrATfBNZ98eOOCk2fOFg7Qg5yoQfFAdf)
 
-Right now, I'm just following his code.
+I did this project/tutorial back in late 2012, but wanted to redo it so commits where't such a mess.
