@@ -5,7 +5,7 @@ import com.paumarin.rain.graphics.Screen;
 import com.paumarin.rain.graphics.Sprite;
 import com.paumarin.rain.graphics.SpriteSheet;
 
-public class Dummy extends Mob {
+public class Chaser extends Mob {
 
 	private AnimatedSprite down = new AnimatedSprite(SpriteSheet.dummy_down, 32, 32, 3);
 	private AnimatedSprite up = new AnimatedSprite(SpriteSheet.dummy_up, 32, 32, 3);
@@ -14,29 +14,16 @@ public class Dummy extends Mob {
 
 	private AnimatedSprite animSprite = down;
 
-	private int time = 0;
 	private int xa = 0;
 	private int ya = 0;
 
-	public Dummy(int x, int y) {
+	public Chaser(int x, int y) {
 		this.x = x << 4;
 		this.y = y << 4;
-
 		sprite = Sprite.dummy;
 	}
 
 	public void update() {
-		time++;
-
-		if (time % (random.nextInt(50) + 30) == 0) {
-			xa = random.nextInt(3) - 1;
-			ya = random.nextInt(3) - 1;
-			if (random.nextInt(4) == 0) {
-				xa = 0;
-				ya = 0;
-			}
-		}
-
 		if (walking) animSprite.update();
 		else animSprite.setFrame(0);
 
@@ -67,7 +54,7 @@ public class Dummy extends Mob {
 
 	public void render(Screen screen) {
 		sprite = animSprite.getSprite();
-		screen.renderMob(x, y, sprite, 0);
+		screen.renderMob(x, y, this);
 	}
 
 }

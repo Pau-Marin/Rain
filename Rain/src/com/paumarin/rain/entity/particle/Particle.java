@@ -6,8 +6,6 @@ import com.paumarin.rain.graphics.Sprite;
 
 public class Particle extends Entity {
 
-	private Sprite sprite;
-
 	private int life;
 	private int time = 0;
 

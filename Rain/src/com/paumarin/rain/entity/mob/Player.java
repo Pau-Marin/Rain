@@ -13,7 +13,6 @@ import com.paumarin.rain.input.Mouse;
 public class Player extends Mob {
 
 	private Keyboard input;
-	private Sprite sprite;
 
 	private AnimatedSprite down = new AnimatedSprite(SpriteSheet.player_down, 32, 32, 3);
 	private AnimatedSprite up = new AnimatedSprite(SpriteSheet.player_up, 32, 32, 3);

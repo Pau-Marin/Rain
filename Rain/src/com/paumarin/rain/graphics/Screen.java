@@ -2,6 +2,8 @@ package com.paumarin.rain.graphics;
 
 import java.util.Random;
 
+import com.paumarin.rain.entity.mob.Chaser;
+import com.paumarin.rain.entity.mob.Mob;
 import com.paumarin.rain.entity.projectile.Projectile;
 import com.paumarin.rain.level.tile.Tile;
 
@@ -115,6 +117,24 @@ public class Screen {
 				if (xa < -sprite.SIZE || xa >= width || ya < 0 || ya >= height) break;
 				if (xa < 0) xa = 0;
 				int col = sprite.pixels[xs + ys * sprite.SIZE];
+				if (col != 0xFFFF00FF) pixels[xa + ya * width] = col;
+			}
+		}
+	}
+
+	public void renderMob(int xp, int yp, Mob mob) {
+		xp -= xOffset;
+		yp -= yOffset;
+		for (int y = 0; y < mob.getSprite().SIZE; y++) {
+			int ya = y + yp;
+			int ys = y;
+			for (int x = 0; x < mob.getSprite().SIZE; x++) {
+				int xa = x + xp;
+				int xs = x;
+				if (xa < -mob.getSprite().SIZE || xa >= width || ya < 0 || ya >= height) break;
+				if (xa < 0) xa = 0;
+				int col = mob.getSprite().pixels[xs + ys * mob.getSprite().SIZE];
+				if ((mob instanceof Chaser) && col == 0xFF472BBF) col = 0xFFBA0015;
 				if (col != 0xFFFF00FF) pixels[xa + ya * width] = col;
 			}
 		}
