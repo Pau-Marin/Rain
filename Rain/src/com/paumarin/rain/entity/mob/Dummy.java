@@ -14,6 +14,10 @@ public class Dummy extends Mob {
 
 	private AnimatedSprite animSprite = down;
 
+	private int time = 0;
+	private int xa = 0;
+	private int ya = 0;
+
 	public Dummy(int x, int y) {
 		this.x = x << 4;
 		this.y = y << 4;
@@ -22,8 +26,16 @@ public class Dummy extends Mob {
 	}
 
 	public void update() {
-		int xa = 0;
-		int ya = 0;
+		time++;
+
+		if (time % (random.nextInt(50) + 30) == 0) {
+			xa = random.nextInt(3) - 1;
+			ya = random.nextInt(3) - 1;
+			if (random.nextInt(4) == 0) {
+				xa = 0;
+				ya = 0;
+			}
+		}
 
 		if (walking) animSprite.update();
 		else animSprite.setFrame(0);
