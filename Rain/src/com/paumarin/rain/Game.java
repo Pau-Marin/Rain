@@ -49,7 +49,7 @@ public class Game extends Canvas implements Runnable {
 		level = Level.spawn;
 		TileCoordinate playerSpawn = new TileCoordinate(19, 62);
 		player = new Player(playerSpawn.x(), playerSpawn.y(), key);
-		player.init(level);
+		level.add(player);
 
 		addKeyListener(key);
 
@@ -87,6 +87,7 @@ public class Game extends Canvas implements Runnable {
 		long timer = System.currentTimeMillis();
 		final double ns = 1000000000.0 / 60.0;
 		double delta = 0;
+		double delta2 = 0;
 		int frames = 0;
 		int updates = 0;
 		requestFocus();
@@ -114,7 +115,6 @@ public class Game extends Canvas implements Runnable {
 
 	public void update() {
 		key.update();
-		player.update();
 		level.update();
 	}
 
@@ -127,10 +127,9 @@ public class Game extends Canvas implements Runnable {
 
 		screen.clear();
 
-		int xScroll = player.x - screen.width / 2;
-		int yScroll = player.y - screen.height / 2;
+		int xScroll = player.getX() - screen.width / 2;
+		int yScroll = player.getY() - screen.height / 2;
 		level.render(xScroll, yScroll, screen);
-		player.render(screen);
 
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
