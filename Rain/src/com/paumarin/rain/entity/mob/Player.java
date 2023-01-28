@@ -47,19 +47,19 @@ public class Player extends Mob {
 		int xa = 0, ya = 0;
 
 		if (input.up) {
-			ya--;
+			ya -= 2;
 			animSprite = up;
 		}
 		if (input.down) {
-			ya++;
+			ya += 2;
 			animSprite = down;
 		}
 		if (input.left) {
-			xa--;
+			xa -= 2;
 			animSprite = left;
 		}
 		if (input.right) {
-			xa++;
+			xa += 2;
 			animSprite = right;
 		}
 
