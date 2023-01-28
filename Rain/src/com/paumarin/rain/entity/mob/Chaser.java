@@ -1,5 +1,7 @@
 package com.paumarin.rain.entity.mob;
 
+import java.util.List;
+
 import com.paumarin.rain.graphics.AnimatedSprite;
 import com.paumarin.rain.graphics.Screen;
 import com.paumarin.rain.graphics.Sprite;
@@ -27,11 +29,14 @@ public class Chaser extends Mob {
 		xa = 0;
 		ya = 0;
 
-		Player player = level.getClientPlayer();
-		if (x < player.getX()) xa++;
-		if (x > player.getX()) xa--;
-		if (y < player.getY()) ya++;
-		if (y > player.getY()) ya--;
+		List<Player> players = level.getPlayers(this, 50);
+		if (players.size() > 0) {
+			Player player = players.get(0);
+			if (x < player.getX()) xa++;
+			if (x > player.getX()) xa--;
+			if (y < player.getY()) ya++;
+			if (y > player.getY()) ya--;
+		}
 
 		if (xa != 0 || ya != 0) {
 			move(xa, ya);
