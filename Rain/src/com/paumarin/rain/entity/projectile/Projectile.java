@@ -8,7 +8,7 @@ import com.paumarin.rain.graphics.Sprite;
 
 public abstract class Projectile extends Entity {
 
-	protected final int xOrigin, yOrigin;
+	protected final double xOrigin, yOrigin;
 	protected double angle;
 	protected double nx, ny;
 	protected double speed, range, damage;
@@ -17,7 +17,7 @@ public abstract class Projectile extends Entity {
 
 	protected final Random random = new Random();
 
-	public Projectile(int x, int y, double dir) {
+	public Projectile(double x, double y, double dir) {
 		xOrigin = x;
 		yOrigin = y;
 		angle = dir;
