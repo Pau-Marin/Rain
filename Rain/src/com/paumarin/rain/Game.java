@@ -87,7 +87,6 @@ public class Game extends Canvas implements Runnable {
 		long timer = System.currentTimeMillis();
 		final double ns = 1000000000.0 / 60.0;
 		double delta = 0;
-		double delta2 = 0;
 		int frames = 0;
 		int updates = 0;
 		requestFocus();

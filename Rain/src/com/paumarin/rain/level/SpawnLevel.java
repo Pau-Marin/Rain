@@ -7,6 +7,7 @@ import javax.imageio.ImageIO;
 
 import com.paumarin.rain.entity.mob.Chaser;
 import com.paumarin.rain.entity.mob.Dummy;
+import com.paumarin.rain.entity.mob.Star;
 
 public class SpawnLevel extends Level {
 
@@ -27,10 +28,10 @@ public class SpawnLevel extends Level {
 		}
 
 		add(new Chaser(20, 55));
-//		for (int i = 0; i < 5; i++) {
-//			add(new Dummy(20, 55));
-//			add(new Chaser(20, 55));
-//		}
+		add(new Star(17, 35));
+		for (int i = 0; i < 5; i++) {
+			add(new Dummy(20, 55));
+		}
 	}
 
 	protected void generateLevel() {

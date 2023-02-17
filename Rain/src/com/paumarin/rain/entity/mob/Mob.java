@@ -4,7 +4,6 @@ import com.paumarin.rain.entity.Entity;
 import com.paumarin.rain.entity.projectile.Projectile;
 import com.paumarin.rain.entity.projectile.WizardProjectile;
 import com.paumarin.rain.graphics.Screen;
-import com.paumarin.rain.graphics.Sprite;
 
 public abstract class Mob extends Entity {
 

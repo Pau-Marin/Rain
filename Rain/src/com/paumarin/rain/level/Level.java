@@ -102,9 +102,6 @@ public class Level {
 		return projectiles;
 	}
 
-	private void time() {
-	}
-
 	public boolean tileCollision(int x, int y, int size, int xOffset, int yOffset) {
 		boolean solid = false;
 

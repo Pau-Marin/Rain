@@ -4,6 +4,7 @@ import java.util.Random;
 
 import com.paumarin.rain.entity.mob.Chaser;
 import com.paumarin.rain.entity.mob.Mob;
+import com.paumarin.rain.entity.mob.Star;
 import com.paumarin.rain.entity.projectile.Projectile;
 import com.paumarin.rain.level.tile.Tile;
 
@@ -99,29 +100,6 @@ public class Screen {
 		}
 	}
 
-	public void renderMob(int xp, int yp, Sprite sprite, int flip) {
-		xp -= xOffset;
-		yp -= yOffset;
-		for (int y = 0; y < sprite.SIZE; y++) {
-			int ya = y + yp;
-			int ys = y;
-			if (flip == 2 || flip == 3) {
-				ys = 31 - y;
-			}
-			for (int x = 0; x < sprite.SIZE; x++) {
-				int xa = x + xp;
-				int xs = x;
-				if (flip == 1 || flip == 3) {
-					xs = 31 - x;
-				}
-				if (xa < -sprite.SIZE || xa >= width || ya < 0 || ya >= height) break;
-				if (xa < 0) xa = 0;
-				int col = sprite.pixels[xs + ys * sprite.SIZE];
-				if (col != 0xFFFF00FF) pixels[xa + ya * width] = col;
-			}
-		}
-	}
-
 	public void renderMob(int xp, int yp, Mob mob) {
 		xp -= xOffset;
 		yp -= yOffset;
@@ -135,6 +113,7 @@ public class Screen {
 				if (xa < 0) xa = 0;
 				int col = mob.getSprite().pixels[xs + ys * mob.getSprite().SIZE];
 				if ((mob instanceof Chaser) && col == 0xFF472BBF) col = 0xFFBA0015;
+				if ((mob instanceof Star) && col == 0xFF472BBF) col = 0xFFE8E83A;
 				if (col != 0xFFFF00FF) pixels[xa + ya * width] = col;
 			}
 		}

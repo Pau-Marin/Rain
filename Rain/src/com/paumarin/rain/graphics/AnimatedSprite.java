@@ -4,7 +4,6 @@ public class AnimatedSprite extends Sprite {
 
 	private int frame = 0;
 	private int rate = 5;
-	private int animationSize = 0;
 	private int length = -1;
 	private int time = 0;
 	private Sprite sprite;

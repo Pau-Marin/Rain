@@ -21,7 +21,6 @@ public class Player extends Mob {
 
 	private AnimatedSprite animSprite = down;
 
-	private int anim = 0;
 	private boolean walking = false;
 
 	private int fireRate = 0;
@@ -45,7 +44,7 @@ public class Player extends Mob {
 
 		if (fireRate > 0) fireRate--;
 		double xa = 0, ya = 0;
-		double speed = 1.0;
+		double speed = 2;
 
 		if (input.up) {
 			ya -= speed;
@@ -95,9 +94,8 @@ public class Player extends Mob {
 	}
 
 	public void render(Screen screen) {
-		int flip = 0;
 		sprite = animSprite.getSprite();
-		screen.renderMob((int) (x - 16), (int) (y - 16), sprite, flip);
+		screen.renderMob(x - 16, y - 16, this);
 	}
 
 }

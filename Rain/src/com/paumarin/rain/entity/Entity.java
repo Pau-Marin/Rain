@@ -8,7 +8,7 @@ import com.paumarin.rain.level.Level;
 
 public class Entity {
 
-	protected double x, y;
+	protected int x, y;
 
 	protected Sprite sprite;
 	protected Level level;
@@ -20,7 +20,7 @@ public class Entity {
 	}
 
 	public void render(Screen screen) {
-		if (sprite != null) screen.renderSprite((int) x, (int) y, sprite, true);
+		if (sprite != null) screen.renderSprite(x, y, sprite, true);
 	}
 
 	public void remove() {
@@ -28,11 +28,11 @@ public class Entity {
 		removed = true;
 	}
 
-	public double getX() {
+	public int getX() {
 		return x;
 	}
 
-	public double getY() {
+	public int getY() {
 		return y;
 	}
 
