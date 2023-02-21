@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import com.paumarin.rain.entity.mob.Dummy;
 import com.paumarin.rain.entity.mob.Shooter;
 
 public class SpawnLevel extends Level {
@@ -25,7 +26,9 @@ public class SpawnLevel extends Level {
 			System.out.println("Exception! Could not load level file!");
 		}
 
+		add(new Shooter(20, 48));
 		add(new Shooter(20, 55));
+		add(new Dummy(15, 53));
 		/*
 		 * add(new Chaser(20, 55)); add(new Star(17, 35)); for (int i = 0; i < 5; i++) {
 		 * add(new Dummy(20, 55)); }
