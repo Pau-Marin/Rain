@@ -18,6 +18,8 @@ public class Shooter extends Mob {
 
 	private AnimatedSprite animSprite = down;
 
+	private Entity rand = null;
+
 	private int time = 0;
 	private int xa = 0, ya = 0;
 
@@ -65,8 +67,28 @@ public class Shooter extends Mob {
 		} else {
 			walking = false;
 		}
+		shootRandom();
+	}
 
-		List<Entity> entities = level.getEntities(this, 50);
+	private void shootRandom() {
+		if (time % (60 + random.nextInt(61)) == 0) {
+			List<Entity> entities = level.getEntities(this, 500);
+			entities.add(level.getClientPlayer());
+
+			int index = random.nextInt(entities.size());
+			rand = entities.get(index);
+		}
+
+		if (rand != null) {
+			double dx = rand.getX() - x;
+			double dy = rand.getY() - y;
+			double dir = Math.atan2(dy, dx);
+			shoot(x, y, dir);
+		}
+	}
+
+	private void shootClosest() {
+		List<Entity> entities = level.getEntities(this, 500);
 		entities.add(level.getClientPlayer());
 
 		double min = 0;
