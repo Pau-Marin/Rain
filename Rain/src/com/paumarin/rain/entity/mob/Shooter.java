@@ -7,6 +7,7 @@ import com.paumarin.rain.graphics.AnimatedSprite;
 import com.paumarin.rain.graphics.Screen;
 import com.paumarin.rain.graphics.Sprite;
 import com.paumarin.rain.graphics.SpriteSheet;
+import com.paumarin.rain.util.Debug;
 import com.paumarin.rain.util.Vector2i;
 
 public class Shooter extends Mob {
@@ -111,6 +112,7 @@ public class Shooter extends Mob {
 	}
 
 	public void render(Screen screen) {
+		Debug.drawRect(screen, 17 * 16, 57 * 16, 60, 40, true);
 		sprite = animSprite.getSprite();
 		screen.renderMob(x - 16, y - 16, this);
 	}
