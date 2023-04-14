@@ -10,6 +10,7 @@ import java.awt.image.DataBufferInt;
 import javax.swing.JFrame;
 
 import com.paumarin.rain.entity.mob.Player;
+import com.paumarin.rain.graphics.Font;
 import com.paumarin.rain.graphics.Screen;
 import com.paumarin.rain.input.Keyboard;
 import com.paumarin.rain.input.Mouse;
@@ -152,6 +153,8 @@ public class Game extends Canvas implements Runnable {
 		game.frame.setVisible(true);
 
 		game.start();
+
+		Font font = new Font();
 	}
 
 }
