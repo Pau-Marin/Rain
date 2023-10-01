@@ -36,6 +36,7 @@ public class Game extends Canvas implements Runnable {
 	private boolean running = false;
 
 	private Screen screen;
+	private Font font;
 	private Keyboard key;
 	private Level level;
 	private Player player;
@@ -51,6 +52,7 @@ public class Game extends Canvas implements Runnable {
 		TileCoordinate playerSpawn = new TileCoordinate(19, 62);
 		player = new Player(playerSpawn.x(), playerSpawn.y(), key);
 		level.add(player);
+		font = new Font();
 
 		addKeyListener(key);
 
@@ -130,6 +132,7 @@ public class Game extends Canvas implements Runnable {
 		double xScroll = player.getX() - screen.width / 2;
 		double yScroll = player.getY() - screen.height / 2;
 		level.render((int) xScroll, (int) yScroll, screen);
+		font.render(screen);
 
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
@@ -154,7 +157,6 @@ public class Game extends Canvas implements Runnable {
 
 		game.start();
 
-		Font font = new Font();
 	}
 
 }

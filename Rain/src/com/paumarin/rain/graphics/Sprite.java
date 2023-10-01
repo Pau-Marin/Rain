@@ -86,7 +86,8 @@ public class Sprite {
 		SIZE = width == height ? width : -1;
 		this.width = width;
 		this.height = height;
-		this.pixels = pixels;
+		this.pixels = new int[pixels.length];
+		System.arraycopy(pixels, 0, this.pixels, 0, pixels.length);
 	}
 
 	public static Sprite[] split(SpriteSheet sheet) {
