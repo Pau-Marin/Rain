@@ -13,6 +13,8 @@ public class Screen {
 	public final int MAP_SIZE = 8;
 	public final int MAP_SIZE_MASK = MAP_SIZE - 1;
 
+	private final int ALPHA_COL = 0xffff00ff;
+
 	public int xOffset, yOffset;
 
 	public int width, height;
@@ -66,7 +68,25 @@ public class Screen {
 			for (int x = 0; x < sprite.getWidth(); x++) {
 				int xa = x + xp;
 				if (xa < 0 || xa >= width || ya < 0 || ya >= height) continue;
-				pixels[xa + ya * width] = sprite.pixels[x + y * sprite.getWidth()];
+				int col = sprite.pixels[x + y * sprite.getWidth()];
+				if (col != ALPHA_COL && col != 0xff7f007f) pixels[xa + ya * width] = col;
+			}
+		}
+	}
+
+	public void renderTextCharacter(int xp, int yp, Sprite sprite, int color, boolean fixed) {
+		if (fixed) {
+			xp -= xOffset;
+			yp -= yOffset;
+		}
+
+		for (int y = 0; y < sprite.getHeight(); y++) {
+			int ya = y + yp;
+			for (int x = 0; x < sprite.getWidth(); x++) {
+				int xa = x + xp;
+				if (xa < 0 || xa >= width || ya < 0 || ya >= height) continue;
+				int col = sprite.pixels[x + y * sprite.getWidth()];
+				if (col != ALPHA_COL && col != 0xff7f007f) pixels[xa + ya * width] = color;
 			}
 		}
 	}
@@ -95,7 +115,7 @@ public class Screen {
 				if (xa < -p.getSpriteSize() || xa >= width || ya < 0 || ya >= height) break;
 				if (xa < 0) xa = 0;
 				int col = p.getSprite().pixels[x + y * p.getSpriteSize()];
-				if (col != 0xFFFF00FF) pixels[xa + ya * width] = col;
+				if (col != ALPHA_COL) pixels[xa + ya * width] = col;
 			}
 		}
 	}
@@ -114,7 +134,7 @@ public class Screen {
 				int col = mob.getSprite().pixels[xs + ys * mob.getSprite().SIZE];
 				if ((mob instanceof Chaser) && col == 0xFF472BBF) col = 0xFFBA0015;
 				if ((mob instanceof Star) && col == 0xFF472BBF) col = 0xFFE8E83A;
-				if (col != 0xFFFF00FF) pixels[xa + ya * width] = col;
+				if (col != ALPHA_COL) pixels[xa + ya * width] = col;
 			}
 		}
 	}
